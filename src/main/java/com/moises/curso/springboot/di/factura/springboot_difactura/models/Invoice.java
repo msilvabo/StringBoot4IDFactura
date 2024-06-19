@@ -11,7 +11,7 @@ public class Invoice {
     @Autowired
     private Client client;
 
-    @Value("${client.description}")    
+    @Value("${invoice.description}")    
     private String description;
 
     @Autowired
@@ -35,5 +35,8 @@ public class Invoice {
     public void setItems(List<Item> items) {
         this.items = items;
     }
-    
+ 
+    public int getTotal(){
+        return items.
+    }
 }
