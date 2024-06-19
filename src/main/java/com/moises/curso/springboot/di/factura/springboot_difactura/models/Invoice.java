@@ -10,9 +10,13 @@ import org.springframework.stereotype.Component;
 public class Invoice {
     @Autowired
     private Client client;
+
     @Value("${client.description}")    
     private String description;
+
+    @Autowired
     private List<Item> items;
+
     public Client getClient() {
         return client;
     }

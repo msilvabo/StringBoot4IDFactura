@@ -3,6 +3,15 @@ package com.moises.curso.springboot.di.factura.springboot_difactura.models;
 public class Item {
     private Product product;
     private Integer quantity;
+
+    
+    public Item() {
+    }
+    
+    public Item(Product product, Integer quantity) {
+        this.product = product;
+        this.quantity = quantity;
+    }
     public Product getProduct() {
         return product;
     }
