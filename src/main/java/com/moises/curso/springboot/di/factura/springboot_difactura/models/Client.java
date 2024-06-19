@@ -1,9 +1,12 @@
 package com.moises.curso.springboot.di.factura.springboot_difactura.models;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Client {
     private String client;
     private String last;
-    
+
     public String getClient() {
         return client;
     }
