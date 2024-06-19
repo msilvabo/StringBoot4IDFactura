@@ -37,6 +37,15 @@ public class Invoice {
     }
  
     public int getTotal(){
-        return items.
+        // int total = 0;
+        // for(Item item : items){
+        //     total += item.getAmount();
+        // }
+
+        int total = items.stream().
+            map(item -> item.getAmount()).
+            reduce(0, (sum,importe) -> sum + importe);
+        return total;
+
     }
 }
