@@ -1,6 +1,5 @@
 package com.moises.curso.springboot.di.factura.springboot_difactura;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import com.moises.curso.springboot.di.factura.springboot_difactura.models.Produc
 @PropertySource(value="classpath:data.properties", encoding = "UTF-8")
 public class AppConfig {
 
-    @Bean
+    @Bean("default")
     List<Item> itemsInvoice(){
         Product p1 = new Product("Camara Sony", 100);
         Product p2 = new Product("TV Samsung", 350);

@@ -3,12 +3,20 @@ package com.moises.curso.springboot.di.factura.springboot_difactura.models;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.RequestScope;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 @Component
+@RequestScope
+@JsonIgnoreProperties({"targetSource","advisors"})
 public class Invoice {
+
     @Autowired
     private Client client;
 
@@ -18,6 +26,26 @@ public class Invoice {
     @Autowired
     // @Qualifier("itemsInvoiceOffice")
     private List<Item> items;
+ 
+    public Invoice(){
+        System.out.println("creando el componente de la factura -INVOICE");
+        System.out.println(client);
+        System.out.println(description);
+    }
+
+    @PostConstruct
+    public void iniciar(){
+        System.out.println("creando el componente de la factura -INIT");
+        client.setName(client.getName().concat("-Pepe"));
+        description = description.concat(" del cliente: ").concat(client.getName()).concat(" ").concat(client.getLast());
+        System.out.println(client);
+        System.out.println(description); 
+    }
+
+    @PreDestroy
+    public void destruir(){
+        System.out.println("Destruyendo compomente Invoice");
+    }
 
     public Client getClient() {
         return client;
